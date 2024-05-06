@@ -28,7 +28,7 @@ class PageResource extends Resource
                 TextInput::make('title')
                     ->required(),
                 TextInput::make('subTitle')
-                    ->required(),
+                    ->nullable(),
                 Forms\Components\Textarea::make('content')
                     ->columnSpan(2)
                     ->rows(5)
@@ -73,6 +73,8 @@ class PageResource extends Resource
             ->actions([
                 Tables\Actions\EditAction::make(),
             ])
+            ->reorderable('ordering')
+            ->paginatedWhileReordering(false)
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),

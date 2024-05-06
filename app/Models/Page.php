@@ -16,6 +16,7 @@ use Illuminate\Support\Carbon;
  * @property string $image1
  * @property string $image2
  * @property bool $is_active
+ * @property int $ordering
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
@@ -32,9 +33,11 @@ class Page extends Model
         'image1',
         'image2',
         'is_active',
+        'ordering',
     ];
 
     protected $casts = [
-        'is_active' => 'boolean'
+        'is_active' => 'boolean',
+        'ordering' => 'int'
     ];
 }
