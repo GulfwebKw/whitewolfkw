@@ -83,8 +83,11 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a class="navlink" href="infrastructure.html">Infrastructure</a>
+                            <li><a class="navlink" href="{{ route('infrastructures') }}">Infrastructure</a>
                                 <ul class="sub-menu">
+                                    @foreach($navbar_infrastructures as $navbar_infrastructure)
+                                        <li><a href="{{ route('infrastructure' , ['Infrastructure' => $navbar_infrastructure->slug]) }}">{{ $navbar_infrastructure->title }}</a></li>
+                                    @endforeach
                                 </ul>
                             </li>
                             <li><a class="navlink" href="news.html">News and Articles</a></li>
@@ -121,9 +124,11 @@
                                                 @endforeach
                                             </ul>
                                         </li>
-                                        <li><a class="has-arrow" href="infrastructure.html">Infrastructure</a>
+                                        <li><a class="has-arrow" href="{{ route('infrastructures') }}">Infrastructure</a>
                                             <ul class="sub-menu">
-
+                                                @foreach($navbar_infrastructures as $navbar_infrastructure)
+                                                    <li><a href="{{ route('infrastructure' , ['Infrastructure' => $navbar_infrastructure->slug]) }}">{{ $navbar_infrastructure->title }}</a></li>
+                                                @endforeach
                                             </ul>
                                         </li>
 
@@ -236,7 +241,7 @@
                             <a href="{{ route('page' , ['Page' => $navbar_pages->first()->slug]) }}">{{ $navbar_pages->first()->title }}</a>
                             @endif
                             <a href="{{ route('services') }}">Services</a>
-                            <a href="infrastructure.html">Infrastructure</a>
+                            <a href="{{ route('infrastructures') }}">Infrastructure</a>
                             <a href="news.html"> News and Articles</a>
                             <a href="contact.html"> Contact us</a>
                         </li>

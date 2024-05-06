@@ -16,3 +16,9 @@ Route::get('/service/{Service:slug}', function (\App\Models\Service $Service) {
 })->name('service');
 
 Route::view('/services', 'services')->name('services');
+
+Route::get('/infrastructure/{Infrastructure:slug}', function (\App\Models\Infrastructure $Infrastructure) {
+    return view('infrastructure' , ['infrastructure' => $Infrastructure]);
+})->name('infrastructure');
+
+Route::view('/infrastructures', 'infrastructures')->name('infrastructures');

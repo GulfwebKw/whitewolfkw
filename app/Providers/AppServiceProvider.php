@@ -24,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
         View::share('setting', app(DetailSettings::class));
         View::share('navbar_pages', \App\Models\Page::query()->where('is_active',true)->orderBy('ordering')->get());
         View::share('navbar_services', \App\Models\Service::query()->where('is_active',true)->orderBy('ordering')->get());
+        View::share('navbar_infrastructures', \App\Models\Infrastructure::query()->where('is_active',true)->orderBy('ordering')->get());
     }
 }
