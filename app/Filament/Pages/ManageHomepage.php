@@ -17,48 +17,99 @@ class ManageHomepage extends SettingsPage
 
     protected static string $settings = HomepageSettings::class;
 
+
     public function form(Form $form): Form
     {
         return $form
+            ->columns(1)
             ->schema([
-                Tabs\Tab::make('Header Slider')
-                    ->schema([
-                        Repeater::make('slideshow')
+                Tabs::make('Tabs')
+                    ->tabs([
+                        Tabs\Tab::make('Header Slider')
                             ->schema([
-                                FileUpload::make('image')
+                                Repeater::make('slideshow')
+                                    ->columns(2)
+                                    ->label('Slide shows')
+                                    ->schema([
+                                        TextInput::make('title')
+                                            ->required(),
+                                        Forms\Components\Textarea::make('description')
+                                            ->required(),
+                                        TextInput::make('link')
+                                            ->url()
+                                            ->required(),
+                                        TextInput::make('button')
+                                            ->required(),
+                                        FileUpload::make('image')
+                                            ->image()
+                                            ->imageEditor()
+                                            ->required(),
+                                    ]),
+                            ]),
+                        Tabs\Tab::make('About Us')
+                            ->columns(2)
+                            ->schema([
+                                TextInput::make('aboutUsTitle')
+                                    ->required(),
+                                TextInput::make('aboutUsContent')
+                                    ->required(),
+                                TextInput::make('aboutUsButtonLabel')
+                                    ->required(),
+                                TextInput::make('aboutUsButtonLink')
+                                    ->url()
+                                    ->required(),
+                                FileUpload::make('aboutUsImage1')
                                     ->image()
                                     ->imageEditor()
                                     ->required(),
-                                TextInput::make('title')
+                                FileUpload::make('aboutUsImage2')
+                                    ->image()
+                                    ->imageEditor(),
+                            ]),
+                        Tabs\Tab::make('Our Mission')
+                            ->columns(2)
+                            ->schema([
+                                TextInput::make('ourMissionTitle')
                                     ->required(),
-                                Forms\Components\Textarea::make('description')
+                                Forms\Components\Textarea::make('ourMissionContent')
                                     ->required(),
-                                TextInput::make('link')
+                                TextInput::make('ourMissionButtonLabel')
+                                    ->required(),
+                                TextInput::make('ourMissionFrom')
+                                    ->required(),
+                                TextInput::make('ourMissionFromSubHeader')
+                                    ->required(),
+                                TextInput::make('ourMissionButtonLink')
                                     ->url()
                                     ->required(),
-                                TextInput::make('button')
-                                    ->required(),
+                                Repeater::make('ourMissionSlideshow')
+                                    ->columns(2)
+                                    ->columnSpan(2)
+                                    ->label('Mission slideshows')
+                                    ->schema([
+                                        TextInput::make('title')
+                                            ->required(),
+                                        FileUpload::make('image')
+                                            ->image()
+                                            ->imageEditor()
+                                            ->required(),
+                                    ]),
+                                Repeater::make('ourMissionProductions')
+                                    ->columns(2)
+                                    ->columnSpan(2)
+                                    ->label('Mission productions')
+                                    ->schema([
+                                        TextInput::make('title')
+                                            ->required(),
+                                        TextInput::make('link')
+                                            ->url()
+                                            ->required(),
+                                        FileUpload::make('image')
+                                            ->image()
+                                            ->imageEditor()
+                                            ->required(),
+                                    ]),
                             ]),
-                    ]),
-                Tabs\Tab::make('About Us')
-                    ->schema([
-                        TextInput::make('aboutUsTitle')
-                            ->required(),
-                        TextInput::make('aboutUsContent')
-                            ->required(),
-                        TextInput::make('aboutUsButtonLabel')
-                            ->required(),
-                        TextInput::make('aboutUsButtonLink')
-                            ->url()
-                            ->required(),
-                        FileUpload::make('aboutUsImage1')
-                            ->image()
-                            ->imageEditor()
-                            ->required(),
-                        FileUpload::make('aboutUsImage2')
-                            ->image()
-                            ->imageEditor()
-                            ->required(),
                     ]),
             ]);
     }
