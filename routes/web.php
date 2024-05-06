@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome' , ['home' => app(\App\Settings\HomepageSettings::class)]);
 });
 
 Route::get('/page/{Page:slug}', function (\App\Models\Page $Page) {

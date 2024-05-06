@@ -153,6 +153,9 @@
     </div>
 </div>
 
+@hasSection('header')
+    @yield("header")
+@endif
 @hasSection('breadcrumb')
 <!-- Hero Area -->
 <div class="breadcrumb-area bread-bg">
@@ -176,12 +179,14 @@
 </div>
 @endif
 
+@hasSection('body')
 <!-- About Section  -->
 <div id="about-2" class="about-section section-padding pb-60">
     <div class="container">
         @yield("body")
     </div>
 </div>
+@endif
 
 @hasSection('footerConcat')
 <div class="cta-section section-padding pt-50 pb-50 theme-bg">
