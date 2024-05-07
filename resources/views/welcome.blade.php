@@ -9,7 +9,7 @@
 @endsection
 
 
-@section('header')
+@section('body')
     <div id="home-2" class="homepage-slides owl-carousel">
         @foreach($home->slideshow as $slider)
             <div class="single-slide-item">
