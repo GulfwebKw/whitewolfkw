@@ -204,30 +204,31 @@
                 <div class="blog-carousel owl-carousel">
 
 
-                    <a href="#" class="single-blog-item wow fadeInUp" data-wow-delay=".2s">
-{{--                        @if($loop->odd)--}}
-{{--                            <div class="blog-img hoverImg">--}}
-{{--                                <figure><img src="assets/img/blog/2-1.jpg" alt=""></figure>--}}
-{{--                            </div>--}}
-{{--                        @endif--}}
-                        <div class="blog-content">
-                            <div class="blog-meta">
-                                <span>Refinery</span>
+                    @foreach($posts as $post)
+                        <a href="{{ route('post' , ['Post' => $post->slug]) }}" class="single-blog-item wow fadeInUp" data-wow-delay=".2s">
+                            @if( $loop->odd )
+                                <div class="blog-img hoverImg">
+                                    <figure><img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}"></figure>
+                                </div>
+                            @endif
+                            <div class="blog-content">
+                                <div class="blog-meta">
+                                    <span>{{ $post->subTitle }}</span>
+                                </div>
+                                <div class="blog-title">
+                                    <h4>{{ $post->title }}</h4>
+                                </div>
+                                <div class="blog-info">
+                                    <span>{{ $post->created_at->format('F d Y') }}</span>
+                                </div>
                             </div>
-                            <div class="blog-title">
-                                <h4>Oil refining: three ways you can invest</h4>
-                            </div>
-                            <div class="blog-info">
-                                <span>November 30 2023</span>
-                                <span>1 comment</span>
-                            </div>
-                        </div>
-{{--                        @if($loop->even)--}}
-{{--                            <div class="blog-img hoverImg">--}}
-{{--                                <figure><img src="assets/img/blog/2-1.jpg" alt=""></figure>--}}
-{{--                            </div>--}}
-{{--                        @endif--}}
-                    </a>
+                            @if( $loop->even )
+                                <div class="blog-img hoverImg">
+                                    <figure><img src="{{ asset('storage/'.$post->image) }}" alt="{{ $post->title }}"></figure>
+                                </div>
+                            @endif
+                        </a>
+                    @endforeach
 
 
                 </div>

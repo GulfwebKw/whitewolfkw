@@ -90,7 +90,7 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a class="navlink" href="news.html">News and Articles</a></li>
+                            <li><a class="navlink" href="{{ route('posts') }}">News and Articles</a></li>
 
                             <li><a class="navlink" href="contact.html">Contact us</a>
                         </ul>
@@ -132,7 +132,7 @@
                                             </ul>
                                         </li>
 
-                                        <li><a href="news.html">News and Articles</a></li>
+                                        <li><a href="{{ route('posts') }}">News and Articles</a></li>
 
                                         <li><a href="contact.html">Contact us</a></li>
 
@@ -239,7 +239,7 @@
                             @endif
                             <a href="{{ route('services') }}">Services</a>
                             <a href="{{ route('infrastructures') }}">Infrastructure</a>
-                            <a href="news.html"> News and Articles</a>
+                            <a href="{{ route('posts') }}"> News and Articles</a>
                             <a href="contact.html"> Contact us</a>
                         </li>
                     </ul>
