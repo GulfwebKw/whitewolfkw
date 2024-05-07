@@ -60,7 +60,6 @@ class PageResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('id')
-                    ->label('شناسه')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
                     ->sortable()

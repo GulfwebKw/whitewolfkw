@@ -12,6 +12,7 @@ class DetailSettings extends Settings
     public string $phone;
     public string $officeAddress;
     public string $poBox ;
+    public array $location ;
     public string $logo ;
     public static function group(): string
     {

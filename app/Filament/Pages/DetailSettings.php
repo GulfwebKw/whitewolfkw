@@ -2,9 +2,12 @@
 
 namespace App\Filament\Pages;
 
+use Dotswan\MapPicker\Fields\Map;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Pages\SettingsPage;
 
 class DetailSettings extends SettingsPage
@@ -30,6 +33,35 @@ class DetailSettings extends SettingsPage
                 Forms\Components\FileUpload::make('logo')
                     ->image()
                     ->required(),
+                Map::make('location')
+                    ->label('Location')
+                    ->columnSpanFull()
+                    ->afterStateUpdated(function (Get $get, Set $set, string|array|null $old, ?array $state): void {
+                        $set('latitude', $state['lat']);
+                        $set('longitude', $state['lng']);
+                    })
+                    ->afterStateHydrated(function ($state, $record, Set $set): void {
+                        $set('location', ['lat' => $state['lat'], 'lng' => $state['lng']]);
+                    })
+                    ->extraStyles([
+                        'min-height: 250px',
+                        'border-radius: 5px'
+                    ])
+                    ->liveLocation()
+                    ->showMarker()
+                    ->markerColor("#22c55eff")
+                    ->showFullscreenControl()
+                    ->showZoomControl()
+                    ->draggable()
+                    ->tilesUrl("https://tile.openstreetmap.de/{z}/{x}/{y}.png")
+                    ->zoom(10)
+                    ->detectRetina()
+                    ->showMyLocationButton()
+                    ->extraTileControl([])
+                    ->extraControl([
+                        'zoomDelta'           => 1,
+                        'zoomSnap'            => 2,
+                    ])
             ]);
     }
 }

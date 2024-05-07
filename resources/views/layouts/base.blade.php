@@ -68,31 +68,31 @@
                     <!-- Main Menu  -->
                     <div class="main-menu d-none d-lg-block">
                         <ul>
-                            <li class="active"><a class="navlink" href="{{ url('/') }}">Home</a> </li>
-                            <li><a class="navlink" href="#">About us</a>
+                            <li @if(request()->routeIs('home'))  class="active" @endif><a class="navlink" href="{{ url('/') }}">Home</a> </li>
+                            <li @if(request()->routeIs('page'))  class="active" @endif><a class="navlink" href="#">About us</a>
                                 <ul class="sub-menu">
                                     @foreach($navbar_pages as $navbar_page)
                                         <li><a href="{{ route('page' , ['Page' => $navbar_page->slug]) }}">{{ $navbar_page->title }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a class="navlink" href="{{ route('services') }}">Services</a>
+                            <li @if(request()->routeIs('services'))  class="active" @endif><a class="navlink" href="{{ route('services') }}">Services</a>
                                 <ul class="sub-menu">
                                     @foreach($navbar_services as $navbar_service)
                                         <li><a href="{{ route('service' , ['Service' => $navbar_service->slug]) }}">{{ $navbar_service->title }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a class="navlink" href="{{ route('infrastructures') }}">Infrastructure</a>
+                            <li @if(request()->routeIs('infrastructures'))  class="active" @endif><a class="navlink" href="{{ route('infrastructures') }}">Infrastructure</a>
                                 <ul class="sub-menu">
                                     @foreach($navbar_infrastructures as $navbar_infrastructure)
                                         <li><a href="{{ route('infrastructure' , ['Infrastructure' => $navbar_infrastructure->slug]) }}">{{ $navbar_infrastructure->title }}</a></li>
                                     @endforeach
                                 </ul>
                             </li>
-                            <li><a class="navlink" href="{{ route('posts') }}">News and Articles</a></li>
+                            <li @if(request()->routeIs('posts'))  class="active" @endif><a class="navlink" href="{{ route('posts') }}">News and Articles</a></li>
 
-                            <li><a class="navlink" href="contact.html">Contact us</a>
+                            <li @if(request()->routeIs('contactUs'))  class="active" @endif><a class="navlink" href="{{ route('contactUs') }}">Contact us</a>
                         </ul>
                     </div>
 
@@ -134,14 +134,14 @@
 
                                         <li><a href="{{ route('posts') }}">News and Articles</a></li>
 
-                                        <li><a href="contact.html">Contact us</a></li>
+                                        <li><a href="{{ route('contactUs') }}">Contact us</a></li>
 
                                     </ul>
                                 </nav>
                                 <div class="action-bar">
                                     <a href="mailto:{{ $setting->email }}"><i class="las la-envelope"></i>{{ $setting->email }}</a>
                                     <a href="tel:{{ str_replace(' ', '' , $setting->phone) }}"><i class="fal fa-phone"></i>{{ $setting->phone }}</a>
-                                    <a href="contact.html" class="theme-btn">Contact Us</a>
+                                    <a href="{{ route('contactUs') }}" class="theme-btn">Contact Us</a>
                                 </div>
                             </div>
                         </div>
@@ -193,7 +193,7 @@
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 text-md-end">
                 <div class="cta-btn">
-                    <a href="contact.html" class="white-btn">Contact Us</a>
+                    <a href="{{ route('contactUs') }}" class="white-btn">Contact Us</a>
                 </div>
             </div>
         </div>
@@ -240,7 +240,7 @@
                             <a href="{{ route('services') }}">Services</a>
                             <a href="{{ route('infrastructures') }}">Infrastructure</a>
                             <a href="{{ route('posts') }}"> News and Articles</a>
-                            <a href="contact.html"> Contact us</a>
+                            <a href="{{ route('contactUs') }}"> Contact us</a>
                         </li>
                     </ul>
                 </div>
