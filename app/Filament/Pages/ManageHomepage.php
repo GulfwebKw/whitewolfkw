@@ -51,12 +51,13 @@ class ManageHomepage extends SettingsPage
                             ->schema([
                                 TextInput::make('aboutUsTitle')
                                     ->required(),
-                                TextInput::make('aboutUsContent')
-                                    ->required(),
                                 TextInput::make('aboutUsButtonLabel')
                                     ->required(),
                                 TextInput::make('aboutUsButtonLink')
                                     ->url()
+                                    ->required(),
+                                Forms\Components\RichEditor::make('aboutUsContent')
+                                    ->columnSpanFull()
                                     ->required(),
                                 FileUpload::make('aboutUsImage1')
                                     ->image()
@@ -71,8 +72,6 @@ class ManageHomepage extends SettingsPage
                             ->schema([
                                 TextInput::make('ourMissionTitle')
                                     ->required(),
-                                Forms\Components\Textarea::make('ourMissionContent')
-                                    ->required(),
                                 TextInput::make('ourMissionButtonLabel')
                                     ->required(),
                                 TextInput::make('ourMissionFrom')
@@ -81,6 +80,9 @@ class ManageHomepage extends SettingsPage
                                     ->required(),
                                 TextInput::make('ourMissionButtonLink')
                                     ->url()
+                                    ->required(),
+                                Forms\Components\RichEditor::make('ourMissionContent')
+                                    ->columnSpanFull()
                                     ->required(),
                                 Repeater::make('ourMissionSlideshow')
                                     ->columns(2)

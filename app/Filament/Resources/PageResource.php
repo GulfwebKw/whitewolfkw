@@ -29,9 +29,8 @@ class PageResource extends Resource
                     ->required(),
                 TextInput::make('subTitle')
                     ->nullable(),
-                Forms\Components\Textarea::make('content')
+                Forms\Components\RichEditor::make('content')
                     ->columnSpan(2)
-                    ->rows(5)
                     ->required(),
                 RadioButtonImage::make('template')
                     ->columnSpan(2)

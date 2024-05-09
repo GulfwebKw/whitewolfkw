@@ -19,7 +19,7 @@
                 <h6>{{ $subTitle }}</h6>
                 <h2>{{ $title }}</h2>
             </div>
-            <p>{!! nl2br(e($content)) !!}</p>
+            <p>{!! nl2br(($content)) !!}</p>
         </div>
     </div>
 </div>

@@ -1,8 +1,5 @@
 @extends('layouts.base')
 
-@section('title')
-    پنل مدیریت
-@endsection
 
 @section('body')
     <div id="home-2" class="homepage-slides owl-carousel">
@@ -20,7 +17,7 @@
                                         <h1 style="max-width: 50%;">{{ $slider['title'] }}</h1>
                                     @endif
                                     @if($slider['description'])
-                                        <p>{!! nl2br(e($slider['description'])) !!}</p>
+                                        <p>{!! nl2br(($slider['description'])) !!}</p>
                                     @endif
                                 </div>
                                 @if($slider['link'])
@@ -60,7 +57,7 @@
                                 <h2>{{ $home->aboutUsTitle }}</h2>
                             @endif
                         </div>
-                        <p>{!! nl2br(e($home->aboutUsContent)) !!}</p>
+                        <p>{!! nl2br(($home->aboutUsContent)) !!}</p>
                         @if($home->aboutUsButtonLink)
                             <a href="{{ $home->aboutUsButtonLink }}"
                                class="theme-btn">{{ $home->aboutUsButtonLabel }}</a>
@@ -116,7 +113,7 @@
                 <div class="col-xl-10 col-lg-10 text-center">
                     <div class="section-title">
                         <h6 class="text-white">{{ $home->ourMissionTitle }}</h6>
-                        <h3 class="text-white">{!! nl2br(e($home->ourMissionContent)) !!}</h3>
+                        <h3 class="text-white">{!! nl2br(($home->ourMissionContent)) !!}</h3>
                     </div>
                     <div class="author-info">
                         <h5 class="text-white">{{ $home->ourMissionFrom }}</h5>
@@ -184,6 +181,7 @@
 
 
 
+    @if($posts->count() > 0 )
     <!-- Blog Section  -->
     <div id="blog-2" class="blog-section gray-bg section-padding">
         <div class="container">
@@ -230,6 +228,6 @@
             </div>
         </div>
     </div>
-
+    @endif
 @endsection
 
