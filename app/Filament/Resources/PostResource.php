@@ -32,7 +32,7 @@ class PostResource extends Resource
                     ->required(),
                 TextInput::make('subTitle')
                     ->nullable(),
-                Forms\Components\RichEditor::make('content')
+                \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('content')
                     ->columnSpan(2)
                     ->required(),
                 Forms\Components\FileUpload::make('image')

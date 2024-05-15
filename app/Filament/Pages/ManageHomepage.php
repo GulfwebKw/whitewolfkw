@@ -56,7 +56,7 @@ class ManageHomepage extends SettingsPage
                                 TextInput::make('aboutUsButtonLink')
                                     ->url()
                                     ->required(),
-                                Forms\Components\RichEditor::make('aboutUsContent')
+                                \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('aboutUsContent')
                                     ->columnSpanFull()
                                     ->required(),
                                 FileUpload::make('aboutUsImage1')
@@ -81,7 +81,7 @@ class ManageHomepage extends SettingsPage
                                 TextInput::make('ourMissionButtonLink')
                                     ->url()
                                     ->required(),
-                                Forms\Components\RichEditor::make('ourMissionContent')
+                                \Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor::make('ourMissionContent')
                                     ->columnSpanFull()
                                     ->required(),
                                 Repeater::make('ourMissionSlideshow')
